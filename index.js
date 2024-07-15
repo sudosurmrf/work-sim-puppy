@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   const displayPlayers = (players) => {
     const playersCardsGrid = document.getElementById(`playersCardsGrid`);
+    playersCardsGrid.innerHTML = ``;
 
     players.forEach(player => {
       const playerCard = document.createElement('section');
@@ -89,6 +90,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-    
-    fetchPuppyPlayers();
+  const addNewPupper = async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById(`name`).value;
+    const breed = document.getElementById(`breed`).value;
+    const imageUrl = document.getElementById(`imageUrl`).value;
+
+    const newPlayer = {
+      name: name,
+      breed: breed,
+      imageUrl: imageUrl
+    };
+
+    try {
+      const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2406-FTB-ET-WEB-FT/players`, {
+        method: `POST`,
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body:JSON.stringify(newPlayer)
+      });
+      if(response.ok){
+        fetchPuppyPlayers();
+      } else{
+        console.error(`Error adding player:`, await response.json());
+      }
+    } catch(err) {
+      console.log(`Error`, err);
+  }
+  };
+  const playerForm = document.getElementById(`playerForm`);
+  playerForm.addEventListener(`submit`, addNewPupper);
+  
+  
+  fetchPuppyPlayers();
 });

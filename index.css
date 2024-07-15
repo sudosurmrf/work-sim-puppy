@@ -1,4 +1,3 @@
-
 /* General styles */
 body {
   font-family: Arial, sans-serif;
@@ -6,17 +5,8 @@ body {
   color: #333;
 }
 
-h2 {
+h2, h3, p {
   text-align: center;
-  
-}
-
-h3 {
-  text-align: center
-}
-
-p {
-  text-align: center
 }
 
 /* Header styles */
@@ -27,8 +17,26 @@ header {
   text-align: center;
 }
 
+/* Form styles */
+#newPlayerForm {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#playerForm input, #playerForm button {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
 /* Main container styles */
-#playersCardsGrid {
+.grid-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   gap: 20px; /* Space between the cards */
@@ -45,7 +53,7 @@ header {
 
 /* Overlay for the enlarged player card */
 .overlay {
-  display: none; 
+  display: none; /* Hidden by default */
   position: fixed;
   top: 0;
   left: 0;
@@ -67,7 +75,7 @@ header {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   max-width: 90%;
   max-height: 90%;
-  overflow-y:auto;
+  overflow-y: auto;
   z-index: 1001;
 }
 
