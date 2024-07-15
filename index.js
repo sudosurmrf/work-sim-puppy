@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const apiPull = await fetch('https://fsa-puppy-bowl.herokuapp.com/api/2406-FTB-ET-WEB-FT/players');
       const response = await apiPull.json();
-      // console.log(response.data.players); //grabs the entire list of players
+      console.log(response.data.players); //grabs the entire list of players
       // console.log(response.data.players[0].name); //grabs the name of the specific indexed player
       // console.log(response.data.players);
       let players = response.data.players;
@@ -34,13 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const playerBreed = document.createElement(`p`);
       playerBreed.textContent = `Breed: ${player.breed}`;
 
-      const playerAge = document.createElement('p');
-      playerAge.textContent = `Age: ${player.age}`;
+      
+
+      // const playerAge = document.createElement('p');
+      // playerAge.textContent = `Age: ${player.age}`;
 
 
       playerCard.appendChild(playerName);
       playerCard.appendChild(playerBreed);
-      playerCard.appendChild(playerAge);
+      // playerCard.appendChild(playerPicture);
+      // playerCard.appendChild(playerAge);
 
 
       playerCard.addEventListener(`click`, () => {
@@ -65,12 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerBreed = document.createElement(`p`);
     playerBreed.textContent = `Breed: ${player.breed}`;
 
-    const playerAge = document.createElement(`p`);
-    playerAge.textContent = `Age: ${player.age}`;
+    const playerPicture = document.createElement(`img`);
+      playerPicture.src = player.imageUrl;
+      playerPicture.alt = `${player.name}'s picture`;
+
+    // const playerAge = document.createElement(`p`);
+    // playerAge.textContent = `Age: ${player.age}`;
 
     enlargedCard.appendChild(playerName);
     enlargedCard.appendChild(playerBreed);
-    enlargedCard.appendChild(playerAge);
+    enlargedCard.appendChild(playerPicture);
+    // enlargedCard.appendChild(playerAge);
 
     overlay.style.display = `flex`;
 
